@@ -41,14 +41,15 @@
     </div>
     <div class="form-field form-required">
         <label for="contact_enquiry" class="form_label">Enquiry <span class="required">(Required)</span></label>
-        <textarea name="contact_enquiry" id="contact_enquiry" rows="5"<?php echo isset($errors->contact_enquiry) ? ' class="error"' : '' ?>></textarea>
+        <textarea name="contact_enquiry" id="contact_enquiry" rows="5"<?php echo isset($errors->contact_enquiry) ? ' class="error"' : '' ?>><?php echo $contact_enquiry; ?></textarea>
         <?php if (isset($errors->contact_enquiry)) { ?>
             <label id="contact_enquiry_error" class="error" for="contact_enquiry_address"><?php echo $errors->contact_enquiry; ?></label>
         <?php } ?>
     </div>
     <?php if ( isset($site_key) && isset($secret_key) ) { ?>
         <div class="form-field form-required">
-            <div class="g-recaptcha" data-sitekey="<?php echo $site_key; ?>"></div>
+            <div class="g-recaptcha" data-sitekey="<?php echo $site_key; ?>" ></div>
+            <input id="hidden-grecaptcha" name="hidden-grecaptcha" type="text" style="opacity: 0; position: absolute; top: 0; left: 0; height: 1px; width: 1px;"/>
             <noscript>
                 <div>
                     <div style="width: 302px; height: 422px; position: relative;">

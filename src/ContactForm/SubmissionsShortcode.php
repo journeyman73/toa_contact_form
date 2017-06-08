@@ -36,7 +36,7 @@
 
                 $errors = $this->form_validation();
 
-                if (empty($errors)) {
+                if (empty((array)$errors)) {
 
                     $result = $this->add_submission_to_db();
 
@@ -46,6 +46,13 @@
 
                         $this->display_contact_form($this->display_message(), NULL);
 
+                    } elseif ( empty($result) ){
+
+                        $_POST = [];
+
+                        $message = '<h4 class="success-message">Your enquiry could not be submitted, please notify the website administrator</h4>';
+
+                        $this->display_contact_form($message, NULL);
                     }
 
                 } else {
