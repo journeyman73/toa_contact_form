@@ -1,0 +1,20 @@
+#contact-form .required {
+  font-size: 75%;
+  color: red; }
+
+#contact-form .form-field {
+  display: block;
+  float: left;
+  width: 100%;
+  margin-bottom: 15px; }
+  #contact-form .form-field input,
+  #contact-form .form-field textarea {
+    margin-bottom: 0 !important; }
+    #contact-form .form-field input.error,
+    #contact-form .form-field textarea.error {
+      border: 1px solid red; }
+  #contact-form .form-field label.error {
+    color: red; }
+
+.success-message {
+  color: green; }
