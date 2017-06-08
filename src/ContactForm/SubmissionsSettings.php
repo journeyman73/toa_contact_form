@@ -34,6 +34,10 @@
             register_setting($this->subpage_properties['option_group'], 'contact_form_description', [$this, 'validate_input']);
             register_setting($this->subpage_properties['option_group'], 'contact_form_message', [$this, 'validate_input']);
 
+            register_setting($this->subpage_properties['option_group'], 'contact_form_recaptcha_site_key', [$this, 'validate_input']);
+            register_setting($this->subpage_properties['option_group'], 'contact_form_recaptcha_secret_key', [$this, 'validate_input']);
+
+
             // Add settings section
             add_settings_section(
                 $this->subpage_properties['option_section'], '', [$this, 'settings_subhead'], $this->subpage_properties['menu_slug']
@@ -73,6 +77,30 @@
                 [
                     'field' => 'contact_form_message',
                     'help'  => $this->subpage_properties['option_name']['contact_form_message']['help']
+                ]
+            );
+
+            add_settings_field(
+                $this->subpage_properties['menu_slug'] . '-contact_form_recaptcha_site_key',
+                $this->subpage_properties['option_name']['contact_form_recaptcha_site_key']['title'],
+                [$this, 'settings_field_input_post_plaintext'],
+                $this->subpage_properties['menu_slug'],
+                $this->subpage_properties['option_section'],
+                [
+                    'field' => 'contact_form_recaptcha_site_key',
+                    'help'  => $this->subpage_properties['option_name']['contact_form_recaptcha_site_key']['help']
+                ]
+            );
+
+            add_settings_field(
+                $this->subpage_properties['menu_slug'] . '-contact_form_recaptcha_secret_key',
+                $this->subpage_properties['option_name']['contact_form_recaptcha_secret_key']['title'],
+                [$this, 'settings_field_input_post_plaintext'],
+                $this->subpage_properties['menu_slug'],
+                $this->subpage_properties['option_section'],
+                [
+                    'field' => 'contact_form_recaptcha_secret_key',
+                    'help'  => $this->subpage_properties['option_name']['contact_form_recaptcha_secret_key']['help']
                 ]
             );
         }

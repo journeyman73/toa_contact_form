@@ -94,8 +94,16 @@
                     'help'  => 'Intro sub text if required for the form'
                 ],
                 'contact_form_message'     => [
-                    'title' => 'Contact Form Message',
-                    'help'  => 'The message shown on successful submission of the form '
+                    'title' => 'Success Message',
+                    'help'  => 'The message shown on successful submission of the form'
+                ],
+                'contact_form_recaptcha_site_key'     => [
+                    'title' => 'reCAPTCHA Site Key',
+                    'help'  => 'Go to Google\'s <a href="https://www.google.com/recaptcha/admin">reCAPTCHA admin page</a>. Register your site. Get a site key and secret key.'
+                ],
+                'contact_form_recaptcha_secret_key'     => [
+                    'title' => 'reCAPTCHA Secret Key',
+                    'help'  => ''
                 ]
             ]
         ];
