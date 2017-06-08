@@ -22,6 +22,7 @@
             wp_enqueue_script('scripts', plugins_url('../assets/js/toa-contact-form-scripts.min.js', __FILE__), ['jquery'], false, true);
         }
 
+        /* Handles the rendering of shortcode */
         public function render_shortcode() {
 
             if (isset($_POST['form-submitted']) && (isset($_POST['page_nonce']) || wp_verify_nonce($_POST['page_nonce'], 'contact_submission_nonce'))) {
@@ -49,7 +50,8 @@
             }
         }
 
-        private function display_contact_form($message = NULL) {
+        /* Handles the form and content */
+        private function display_contact_form($message = null) {
 
             global $post;
 
@@ -73,7 +75,7 @@
 
             $form_errors = new stdClass();
 
-            if ( isset($_POST["contact_name"]) && trim($_POST['contact_name']) === '') {
+            if (isset($_POST["contact_name"]) && trim($_POST['contact_name']) === '') {
 
                 $form_errors->contact_name = 'Please enter your name';
 
@@ -91,9 +93,9 @@
                 $form_errors->contact_email_address = "Please enter a valid email address";
             }
 
-            if ( isset ( $_POST["contact_telephone_number"]) && $_POST["contact_telephone_number"] != NULL) {
+            if (isset ($_POST["contact_telephone_number"]) && $_POST["contact_telephone_number"] != null) {
 
-                if ( !preg_match("/^[0-9\040\.\-+()]+$/i", trim($_POST['contact_telephone_number']))) {
+                if (!preg_match("/^[0-9\040\.\-+()]+$/i", trim($_POST['contact_telephone_number']))) {
 
                     $form_errors->contact_telephone_number = "Please enter a valid phone number";
 
@@ -143,7 +145,7 @@
                 'contact_telephone_number' => $submission_item['contact_telephone_number'],
                 'contact_enquiry'          => $submission_item['contact_enquiry'],
                 'contact_page_id'          => $submission_item['contact_page_id'],
-                'contact_submission_date'  => current_time( 'mysql' )
+                'contact_submission_date'  => current_time('mysql')
             ];
 
             $result = $wpdb->insert($table_name, $submission_item);
@@ -151,11 +153,12 @@
             return $result;
         }
 
+        /* Handles the rendering of messages */
         private function display_message() {
 
             $form_message = get_option('contact_form_message');
 
-            if ( isset($form_message) && !empty($form_message) ) {
+            if (isset($form_message) && !empty($form_message)) {
 
                 return '<h4 class="success-message">' . $form_message . '</h4>';
 

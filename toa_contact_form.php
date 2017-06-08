@@ -167,6 +167,6 @@
         return $object;
     }
 
-    register_activation_hook(__FILE__, array('ContactForm_Main', 'activate'));
+    register_activation_hook(__FILE__, ['ContactForm_Main', 'activate']);
 
-    register_deactivation_hook(__FILE__, array('ContactForm_Main', 'deactivate'));
+    register_deactivation_hook(__FILE__, ['ContactForm_Main', 'deactivate']);

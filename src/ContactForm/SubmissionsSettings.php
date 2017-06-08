@@ -11,8 +11,8 @@
 
         public function run() {
 
-            add_action('admin_menu',[$this, 'add_menu_and_page']);
-            add_action('admin_init',[$this, 'register_settings']);
+            add_action('admin_menu', [$this, 'add_menu_and_page']);
+            add_action('admin_init', [$this, 'register_settings']);
         }
 
         public function add_menu_and_page() {
@@ -121,7 +121,7 @@
             $menu_slug = $this->subpage_properties['menu_slug']
             ?>
             <div class="wrap">
-                <h2><?php _e('Contact Form Submissions', 'toa_contact_form')?></h2>
+                <h2><?php _e('Contact Form Submissions', 'toa_contact_form') ?></h2>
                 <?php settings_errors(); ?>
                 <form method="post" action="options.php">
                     <?php settings_fields($option_group); ?>

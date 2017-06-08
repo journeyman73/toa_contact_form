@@ -10,7 +10,7 @@
 
         public function __construct() {
 
-            $this->contents = array();
+            $this->contents = [];
         }
 
         public function offsetSet($offset, $value) {
@@ -59,7 +59,7 @@
             }
         }
 
-        // Set up table to store contact data
+        /* Set up table to store contact data */
         public static function activate() {
 
             global $wpdb;

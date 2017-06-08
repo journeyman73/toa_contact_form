@@ -6,7 +6,6 @@
 
     class ContactForm_SubmissionsTable extends WP_List_Table
     {
-        /** Class constructor */
         function __construct() {
 
             global $status, $page;
@@ -18,13 +17,13 @@
             ]);
         }
 
-        /** Text displayed when no data */
+        /* Text displayed when no data */
         public function no_items() {
 
             _e('No submissions avaliable.', 'toa_contact_form');
         }
 
-        /** Default column renderer */
+        /* Default column renderer */
         function column_default($item, $column_name) {
 
             switch ($column_name) {
@@ -40,31 +39,31 @@
             }
         }
 
-        /** contact_name column renderer */
+        /* Contact_name column renderer */
         function column_contact_name($item) {
 
-            $actions = array(
+            $actions = [
                 'view'   => sprintf('<a href="?page=contact-form&action=view&ID=%s">%s</a>', $item['ID'], __('View', 'toa_contact_form')),
                 'delete' => sprintf('<a href="?page=%s&action=delete&ID=%s">%s</a>', $_REQUEST['page'], $item['ID'], __('Delete', 'toa_contact_form')),
-            );
+            ];
 
             return sprintf('%s %s', $item['contact_name'], $this->row_actions($actions));
         }
 
-        /** contact_submission_date column renderer */
+        /* Contact_submission_date column renderer */
         function column_contact_submission_date($item) {
 
             return date('jS F Y \a\t g:i a', strtotime($item["contact_submission_date"]));
         }
 
 
-        /** Checkbox column renderer */
+        /* Checkbox column renderer */
         function column_cb($item) {
 
             return sprintf('<input type="checkbox" name="ID[]" value="%s" />', $item['ID']);
         }
 
-        /** Array of columns */
+        /* Array of columns on table */
         function get_columns() {
 
             $columns = [
@@ -77,7 +76,7 @@
             return $columns;
         }
 
-        /** Columns that may be used to sort table */
+        /* Columns that may be used to sort table */
         function get_sortable_columns() {
 
             $sortable_columns = [
@@ -88,7 +87,7 @@
             return $sortable_columns;
         }
 
-        /** Bulk actions */
+        /* Bulk actions for table */
         function get_bulk_actions() {
 
             $actions = [
@@ -98,7 +97,7 @@
             return $actions;
         }
 
-        /** Process bulk actions */
+        /* Process bulk actions */
         function process_bulk_action() {
 
             global $wpdb;
@@ -125,7 +124,7 @@
 
         }
 
-        /** Handles data query and filter, sorting, and pagination */
+        /* Handles data query and filter, sorting, and pagination */
         public function prepare_items() {
 
             global $wpdb;
